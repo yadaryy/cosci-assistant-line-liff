@@ -10,9 +10,9 @@ const Navbar = () => {
     async function fetchProfile() {
       try {
         const profile = await getProfile();
-        if (profile) {
+        if (profile && profile.pictureUrl) { // Check if profile and pictureUrl are defined
             setProfileImage(profile.pictureUrl);
-          } 
+          }
       } catch (error) {
         console.error('Error fetching profile:', error);
       }
