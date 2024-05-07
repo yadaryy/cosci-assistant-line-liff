@@ -30,7 +30,7 @@ const Navbar = () => {
             <Image src="/musical-bell-outline.png" alt="BELL IMAGE" width={25} height={25} />
           </button>
           {profileImage && (
-            <Image src={profileImage} alt="Profile" className="object-cover rounded-full" width={40} height={40} />
+            <Image src={profileImage} alt="Profile" className="object-cover rounded-full" width={25} height={25} />
           )}
         </div>
       </div>

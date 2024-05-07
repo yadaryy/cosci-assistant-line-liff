@@ -47,13 +47,13 @@ export default function Home() {
         <label className="w-3/5 relative cursor-pointer">
           <input type="checkbox" className="peer sr-only" name="size-choice"  disabled={notificationData ? notificationData.news === 1 : true} />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
-            <svg xmlns="http://www.w3.org/2000/svg" className="fill-violet-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <circle cx="12" cy="12" r="9" />
               <path d="M9 12l2 2l4 -4" />
             </svg>
           </span>
-          <div className="woverflow-hidden rounded-lg bg-white shadow-md ring ring-transparent grayscale transition-all active:scale-95 peer-checked:ring-violet-800 peer-checked:grayscale-0">
+          <div className="woverflow-hidden rounded-lg bg-white shadow-md ring ring-transparent grayscale transition-all active:scale-95 peer-checked:ring-gray-300 peer-checked:grayscale-0">
             <header className="px-2.5 py-2.5">
               <p className="text-lg font-bold tracking-wide text-gray-700">ข่าวสารทั่วไป</p>
               <p className="text-xs text-gray-400">ภายในวิทยาลัยนวัตกรรมสื่อสารสังคม</p>
@@ -63,13 +63,13 @@ export default function Home() {
         <label className="w-3/5 relative cursor-pointer">
           <input type="checkbox" className="peer sr-only" name="size-choice" disabled={notificationData ? notificationData.news === 1 : true}/>
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
-            <svg xmlns="http://www.w3.org/2000/svg" className="fill-violet-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <circle cx="12" cy="12" r="9" />
               <path d="M9 12l2 2l4 -4" />
             </svg>
           </span>
-          <div className="overflow-hidden rounded-lg bg-white shadow-md ring ring-transparent grayscale transition-all active:scale-95 peer-checked:ring-violet-800 peer-checked:grayscale-0">
+          <div className="overflow-hidden rounded-lg bg-white shadow-md ring ring-transparent grayscale transition-all active:scale-95 peer-checked:ring-gray-300 peer-checked:grayscale-0">
             <header className="px-2.5 py-2.5">
               <p className="text-lg font-bold tracking-wide text-gray-700">ข่าวด่วน</p>
               <p className="text-xs text-gray-400">การแจ้งเหตุฉุกเฉินหรือเรื่องเร่งด่วน</p>
