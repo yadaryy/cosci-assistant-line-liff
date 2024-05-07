@@ -34,7 +34,7 @@ export default function Home() {
     <div className="mx-auto max-w-2xl justify-center">
 
     <div className="pb-5 mx-auto flex justify-center">
-    <label htmlFor="department" className=" relative inline-flex text-md font-medium text-gray-900  pr-4" >
+    <label htmlFor="department" className=" relative inline-flex text-md font-medium text-white  pr-4" >
   ตั้งค่าการรับข่าวสาร
 </label>  
     <label className="relative inline-flex items-center cursor-pointer">
@@ -78,7 +78,7 @@ export default function Home() {
         </label>
       </div>
       <div className="pt-5 flex justify-center">
-    <button type="button" className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-white bg-gradient-to-br from-pink-500 to-orange-300 hover:from-violet-700 hover:to-pink-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
+    <button type="button" className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white hover:from-violet-700 hover:to-pink-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
     </div>
     </div>
   </div>
