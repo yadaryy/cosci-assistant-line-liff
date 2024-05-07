@@ -11,9 +11,5 @@ export const initLIFF = async () => {
 };
 
 export const getProfile = async () => {
-  if (liff.isLoggedIn()) {
     return await liff.getProfile();
-  } else {
-    liff.login();
-  }
 };

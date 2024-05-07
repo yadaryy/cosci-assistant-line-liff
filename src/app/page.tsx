@@ -1,7 +1,32 @@
+'use client'
+import { useState, useEffect } from 'react';
+import { getNotify } from '@/libs/api';
+import { getProfile } from '@/libs/liff';
 
-import Image from "next/image"
+interface NotificationData {
+  emergency: number;
+  news: number;
+}
 
 export default function Home() {
+  const [notificationData, setNotificationData] = useState<NotificationData | null>(null);
+
+  useEffect(() => {
+    async function fetchNotificationData() {
+      try {
+        const profile = await getProfile();
+        const id = profile.userId;
+        const data = await getNotify(id);
+        setNotificationData(data);
+        console.log('profile');
+
+      } catch (error) {
+        console.error('Error fetching notification data:', error);
+      }
+    }
+
+    fetchNotificationData();
+  }, []);
 
   return (
     
@@ -20,7 +45,7 @@ export default function Home() {
       <div className="flex flex-wrap justify-center gap-4">
         
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" className="peer sr-only" name="size-choice" />
+          <input type="checkbox" className="peer sr-only" name="size-choice"  disabled={notificationData ? notificationData.news === 1 : true} />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-violet-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -36,7 +61,7 @@ export default function Home() {
           </div>
         </label>
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" className="peer sr-only" name="size-choice" />
+          <input type="checkbox" className="peer sr-only" name="size-choice" disabled={notificationData ? notificationData.news === 1 : true}/>
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-violet-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
