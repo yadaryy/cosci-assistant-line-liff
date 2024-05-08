@@ -15,6 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     initLIFF();
+    
     async function fetchProfile() {
       try {
         const profile = await getProfile();
