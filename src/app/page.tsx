@@ -4,6 +4,9 @@ import { getNotify } from '@/libs/api';
 import { getProfile } from '@/libs/liff';
 
 export default function Home() {
+  const handleSubmit = async() => {
+    console.log('hello world');
+  };
   return (
     
     <div className="flex min-h-screen items-start justify-center p-4 overflow-hidden ">
