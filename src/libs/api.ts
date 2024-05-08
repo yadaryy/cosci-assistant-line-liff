@@ -1,18 +1,35 @@
-export async function getNotifyStatus(id:String) {
-    const url = `https://5481-184-22-54-143.ngrok-free.app/notify/${id}`; // Assuming the API route is defined under /pages/api/notify/[id].js
-    const response = await fetch(url, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-       "Content-Type": "application/json"
-    }});
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+
+export interface notifyStatus {
+  result: string,
+  data: {
+        id: number,
+        user_code: string,
+        emergency: boolean,
+        news: boolean,
+        created_at: string,
+        updated_at: string
     }
+}
 
-    return response.json();
-  }
+export async function getNotifyStatus(id: string) {
+  const url = `https://5481-184-22-54-143.ngrok-free.app/notify/${id}`;
+try{
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
+  const jsonResponse = await response.json();
+  console.log('Response:', jsonResponse);
+
+  return jsonResponse;
+}catch(error){
+  console.log(error);
+  throw Error;
+}
+}
 
 export async function postNotifySettings(id:String, emergency:Boolean, news:Boolean) {
     const url = `https://5481-184-22-54-143.ngrok-free.app/notify/setting/${id}`;
