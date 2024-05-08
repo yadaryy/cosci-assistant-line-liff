@@ -1,4 +1,3 @@
-
 import liff from '@line/liff';
 
 export const initLIFF = async () => {
@@ -13,5 +12,10 @@ export const initLIFF = async () => {
 };
 
 export const getProfile = async () => {
-    return await liff.getProfile();
+    await liff.ready
+    if (liff.isLoggedIn()) {
+      return await liff.getProfile();
+    }else {
+      liff.login();
+    }
 };
