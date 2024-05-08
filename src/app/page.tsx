@@ -26,7 +26,6 @@ export default function Home() {
           }
         const notificationStatus = await getNotifyStatus(profile.userId); 
         if (notificationStatus) {
-          console.log('isus !!!!',notificationStatus)
             setEmergency(notificationStatus.emergency === 1);
             setNews(notificationStatus.news === 1);
         }
