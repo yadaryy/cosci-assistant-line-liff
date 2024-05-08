@@ -25,7 +25,7 @@ export default function Home() {
             setProfileImage(profile.pictureUrl);
             setUserId(profile.userId);
           }
-        const notificationStatus = await getNotifyStatus(userId); 
+        const notificationStatus = await getNotifyStatus(profile.userId); 
         if (notificationStatus) {
             setEmergency(notificationStatus.emergency === 1);
             setNews(notificationStatus.news === 1);
@@ -35,7 +35,7 @@ export default function Home() {
       }
     }
     fetchProfile();
-  }, []);
+  });
 
   const handleSettingState = (event: ChangeEvent<HTMLInputElement>) => {
     setSettingState(event.target.checked);
@@ -71,7 +71,7 @@ export default function Home() {
   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full shadow-md peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-300"></div>
   </label>
 )}
-{!editState && ( <button type="button" onClick={handleEdit} className="py-1.5 px-3 me-1 mb-1 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button> )}
+{!editState && ( <button type="button" onClick={handleEdit} className="py-1.5 px-3 me-1 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button> )}
 </div>
       <div className="flex flex-wrap justify-center gap-4">
         <label className="w-3/5 relative cursor-pointer">
