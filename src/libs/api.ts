@@ -1,7 +1,7 @@
 export async function getNotifyStatus(id:String) {
     const url = `https://5481-184-22-54-143.ngrok-free.app/notify/${id}`; // Assuming the API route is defined under /pages/api/notify/[id].js
     const response = await fetch(url);
-  
+    
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

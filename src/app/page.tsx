@@ -25,7 +25,7 @@ export default function Home() {
             setProfileImage(profile.pictureUrl);
             setUserId(profile.userId);
           }
-        const notificationStatus = await getNotifyStatus(profile.userId); 
+        const notificationStatus = await getNotifyStatus(userId); 
         if (notificationStatus) {
             setEmergency(notificationStatus.emergency === 1);
             setNews(notificationStatus.news === 1);
