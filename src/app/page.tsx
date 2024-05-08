@@ -60,7 +60,7 @@ export default function Home() {
   ตั้งค่าการรับข่าวสาร
 </label>  
     <label className="relative inline-flex items-center cursor-pointer">
-  <input type="checkbox" checked= {settingState} onChange= {handleSettingState} className="sr-only peer" />
+    {editState && ( <input type="checkbox" checked= {settingState} onChange= {handleSettingState} className="sr-only peer" /> )}
   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full shadow-md peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-300"></div>
 </label>
 <button type="button" onClick={handleEdit} className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button>
@@ -101,8 +101,15 @@ export default function Home() {
         </label>
       </div>
       <div className="pt-5 flex justify-center">
-    <button type="button" onClick={handleSubmit} className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
-    </div>
+         {editState && (
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              >
+                ยืนยัน
+              </button>
+          )}    </div>
     </div>
   </div>
   </>
