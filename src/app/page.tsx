@@ -64,12 +64,11 @@ export default function Home() {
   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full shadow-md peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-300"></div>
 </label>
 )};
-<button type="button" onClick={handleEdit} className="py-1.5 px-3 me-2 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button>
+{!editState && ( <button type="button" onClick={handleEdit} className="py-1.5 px-3 me-2 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button> )}
 </div>
       <div className="flex flex-wrap justify-center gap-4">
-        
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" checked={news} onChange={handleNewsChange} disabled={editState} className="peer sr-only" name="size-choice"  />
+          <input type="checkbox" checked={news} onChange={handleNewsChange} disabled={!editState} className="peer sr-only" name="size-choice"  />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -85,7 +84,7 @@ export default function Home() {
           </div>
         </label>
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" checked={emergency} onChange={handleEmergencyChange} disabled={editState} className="peer sr-only" name="size-choice" />
+          <input type="checkbox" checked={emergency} onChange={handleEmergencyChange} disabled={!editState} className="peer sr-only" name="size-choice" />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
