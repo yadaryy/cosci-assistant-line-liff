@@ -4,9 +4,15 @@ import Image from 'next/image';
 import { getProfile, initLIFF } from '@/libs/liff';
 import { getNotify } from '@/libs/api';
 import Navbar from '@/common/navbar';
+import { ChangeEvent, MouseEvent } from 'react';
 
 export default function Home() {
   const [profileImage, setProfileImage] = useState('');
+  const [editState, setEditState] = useState(false);
+  const [settingState, setSettingState] = useState(false);
+  const [emergency, setEmergency] = useState(false);
+  const [news, setNews] = useState(false);
+
   useEffect(() => {
     initLIFF();
     async function fetchProfile() {
@@ -22,8 +28,27 @@ export default function Home() {
     fetchProfile();
   }, []);
 
+  const handleSettingState = (event: ChangeEvent<HTMLInputElement>) => {
+    setSettingState(event.target.checked);
+  }
+
+  const handleEditState = (event: ChangeEvent<HTMLInputElement>) => {
+    setEditState(event.target.checked);
+  };
+
+  const handleEmergencyChange = (event: ChangeEvent<HTMLInputElement>) => {// Check if files exist and get the first file
+      setEmergency(event.target.checked);
+  };
+
+  const handleNewsChange = (event: ChangeEvent<HTMLInputElement>) => {// Check if files exist and get the first file
+      setNews(event.target.checked);
+  };
+
+  const handleEdit = async() => {
+
+  }
   const handleSubmit = async() => {
-    console.log('hello world');
+    
   };
   return (
     <>
@@ -35,14 +60,15 @@ export default function Home() {
   ตั้งค่าการรับข่าวสาร
 </label>  
     <label className="relative inline-flex items-center cursor-pointer">
-  <input type="checkbox" value="" className="sr-only peer" />
+  <input type="checkbox" checked= {settingState} onChange= {handleSettingState} className="sr-only peer" />
   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full shadow-md peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-300"></div>
 </label>
+<button type="button" onClick={handleEdit} className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button>
 </div>
       <div className="flex flex-wrap justify-center gap-4">
         
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" className="peer sr-only" name="size-choice"  />
+          <input type="checkbox" checked={news} onChange={handleNewsChange} disabled={editState} className="peer sr-only" name="size-choice"  />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -58,7 +84,7 @@ export default function Home() {
           </div>
         </label>
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" className="peer sr-only" name="size-choice" />
+          <input type="checkbox" checked={emergency} onChange={handleEmergencyChange} disabled={editState} className="peer sr-only" name="size-choice" />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -75,7 +101,7 @@ export default function Home() {
         </label>
       </div>
       <div className="pt-5 flex justify-center">
-    <button type="button" className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white hover:hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
+    <button type="button" onClick={handleSubmit} className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
     </div>
     </div>
   </div>
