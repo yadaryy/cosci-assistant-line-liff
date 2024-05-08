@@ -1,17 +1,35 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { getProfile, initLIFF } from '@/libs/liff';
 import { getNotify } from '@/libs/api';
-import { getProfile } from '@/libs/liff';
+import Navbar from '@/common/navbar';
 
 export default function Home() {
+  const [profileImage, setProfileImage] = useState('');
+  useEffect(() => {
+    initLIFF();
+    async function fetchProfile() {
+      try {
+        const profile = await getProfile();
+        if (profile && profile.pictureUrl) { // Check if profile and pictureUrl are defined
+            setProfileImage(profile.pictureUrl);
+          }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    }
+    fetchProfile();
+  }, []);
+
   const handleSubmit = async() => {
     console.log('hello world');
   };
   return (
-    
+    <>
+    <Navbar profileImage= {profileImage} />
     <div className="flex min-h-screen items-start justify-center p-4 overflow-hidden ">
     <div className="mx-auto max-w-2xl justify-center">
-
     <div className="pb-5 mx-auto flex justify-center">
     <label htmlFor="department" className=" relative inline-flex text-md font-medium text-white  pr-4" >
   ตั้งค่าการรับข่าวสาร
@@ -61,5 +79,6 @@ export default function Home() {
     </div>
     </div>
   </div>
+  </>
   );
 }
