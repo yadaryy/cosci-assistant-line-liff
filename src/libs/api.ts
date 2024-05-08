@@ -6,7 +6,9 @@ export async function getNotifyStatus(id:String) {
       throw new Error('Network response was not ok');
     }
   
-    return await response.json();
+    console.log(response.json())
+
+    return response.json()
   }
 
 
