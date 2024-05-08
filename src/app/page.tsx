@@ -45,10 +45,10 @@ export default function Home() {
   };
 
   const handleEdit = async() => {
-
+    setEditState(true);
   }
   const handleSubmit = async() => {
-    
+    setEditState(false);
   };
   return (
     <>
@@ -63,7 +63,7 @@ export default function Home() {
     {editState && ( <input type="checkbox" checked= {settingState} onChange= {handleSettingState} className="sr-only peer" /> )}
   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full shadow-md peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-300"></div>
 </label>
-<button type="button" onClick={handleEdit} className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button>
+<button type="button" onClick={handleEdit} className="py-1.5 px-3 me-2 mb-2 text-sm font-medium text-dark focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600">แก้ไข</button>
 </div>
       <div className="flex flex-wrap justify-center gap-4">
         
