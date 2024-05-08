@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/style/globals.css";
 import  Navbar from "./navbar";
-import { initLIFF } from '@/libs/liff';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +15,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  initLIFF();
   return (
     <html lang="en">
       <body className={inter.className}>

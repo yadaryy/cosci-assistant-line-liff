@@ -1,11 +1,12 @@
 'use client'
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { getProfile } from '@/libs/liff';
+import { getProfile, initLIFF } from '@/libs/liff';
 
 const Navbar = () => {
   const [profileImage, setProfileImage] = useState('');
   useEffect(() => {
+    initLIFF();
     async function fetchProfile() {
       try {
         const profile = await getProfile();
