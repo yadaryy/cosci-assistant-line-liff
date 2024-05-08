@@ -3,31 +3,7 @@ import { useState, useEffect } from 'react';
 import { getNotify } from '@/libs/api';
 import { getProfile } from '@/libs/liff';
 
-interface NotificationData {
-  emergency: number;
-  news: number;
-}
-
 export default function Home() {
-  const [notificationData, setNotificationData] = useState<NotificationData | null>(null);
-
-  useEffect(() => {
-    async function fetchNotificationData() {
-      try {
-        const profile = await getProfile();
-        const id = profile.userId;
-        const data = await getNotify(id);
-        setNotificationData(data);
-        console.log('profile');
-
-      } catch (error) {
-        console.error('Error fetching notification data:', error);
-      }
-    }
-
-    fetchNotificationData();
-  }, []);
-
   return (
     
     <div className="flex min-h-screen items-start justify-center p-4 overflow-hidden ">
@@ -45,7 +21,7 @@ export default function Home() {
       <div className="flex flex-wrap justify-center gap-4">
         
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" className="peer sr-only" name="size-choice"  disabled={notificationData ? notificationData.news === 1 : true} />
+          <input type="checkbox" className="peer sr-only" name="size-choice"  />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -61,7 +37,7 @@ export default function Home() {
           </div>
         </label>
         <label className="w-3/5 relative cursor-pointer">
-          <input type="checkbox" className="peer sr-only" name="size-choice" disabled={notificationData ? notificationData.news === 1 : true}/>
+          <input type="checkbox" className="peer sr-only" name="size-choice" />
           <span className="absolute top-2 right-2 z-10 opacity-0 transition-all peer-checked:opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-800 stroke-white" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -78,7 +54,7 @@ export default function Home() {
         </label>
       </div>
       <div className="pt-5 flex justify-center">
-    <button type="button" className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white hover:from-violet-700 hover:to-pink-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
+    <button type="button" className="ease-out duration-300 shadow-md w-2/5 flex flex-wrap justify-center text-dark bg-white hover:hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ยืนยัน</button>
     </div>
     </div>
   </div>
