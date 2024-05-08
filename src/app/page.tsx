@@ -27,7 +27,7 @@ export default function Home() {
   };
   return (
     <>
-    <Navbar profileImage= {profileImage} />
+    <Navbar profileImage= { profileImage } />
     <div className="flex min-h-screen items-start justify-center p-4 overflow-hidden ">
     <div className="mx-auto max-w-2xl justify-center">
     <div className="pb-5 mx-auto flex justify-center">
