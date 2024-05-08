@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { getProfile, initLIFF } from '@/libs/liff';
-import { getNotify } from '@/libs/api';
+import { getNotifyStatus } from '@/libs/api';
+import { postNotifySettings } from '@/libs/api';
 import Navbar from '@/common/navbar';
 import { ChangeEvent, MouseEvent } from 'react';
 
@@ -12,16 +13,23 @@ export default function Home() {
   const [settingState, setSettingState] = useState(false);
   const [emergency, setEmergency] = useState(false);
   const [news, setNews] = useState(false);
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     initLIFF();
-    
+
     async function fetchProfile() {
       try {
         const profile = await getProfile();
         if (profile && profile.pictureUrl) { // Check if profile and pictureUrl are defined
             setProfileImage(profile.pictureUrl);
+            setUserId(profile.userId);
           }
+        const notificationStatus = await getNotifyStatus(profile.userId); // Assuming profile.id exists
+        if (notificationStatus) {
+            setEmergency(notificationStatus.emergency === 1);
+            setNews(notificationStatus.news === 1);
+        }
       } catch (error) {
         console.error('Error fetching profile:', error);
       }
@@ -32,10 +40,6 @@ export default function Home() {
   const handleSettingState = (event: ChangeEvent<HTMLInputElement>) => {
     setSettingState(event.target.checked);
   }
-
-  const handleEditState = (event: ChangeEvent<HTMLInputElement>) => {
-    setEditState(event.target.checked);
-  };
 
   const handleEmergencyChange = (event: ChangeEvent<HTMLInputElement>) => {// Check if files exist and get the first file
       setEmergency(event.target.checked);
@@ -50,6 +54,7 @@ export default function Home() {
   }
   const handleSubmit = async() => {
     setEditState(false);
+    postNotifySettings(userId, emergency, news)
   };
   return (
     <>
@@ -110,7 +115,8 @@ export default function Home() {
               >
                 ยืนยัน
               </button>
-          )}    </div>
+          )} 
+      </div>
     </div>
   </div>
   </>
