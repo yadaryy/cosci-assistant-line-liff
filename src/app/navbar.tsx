@@ -5,10 +5,9 @@ import { getProfile, initLIFF } from '@/libs/liff';
 
 const Navbar = () => {
   const [profileImage, setProfileImage] = useState('');
-
-  initLIFF();
   
   useEffect(() => {
+    initLIFF();
     async function fetchProfile() {
       try {
         const profile = await getProfile();
