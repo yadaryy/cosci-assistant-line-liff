@@ -2,7 +2,11 @@
 import liff from '@line/liff';
 
 export const initLIFF = async () => {
-  await liff.init({ liffId: '2000715932-eAbL6q22'});
+  try {
+    await liff.init({ liffId: '2000715932-eAbL6q22' });  
+  } catch (error) {
+    console.error('liff init error')
+  }
   if (!liff.isLoggedIn()) {
     liff.login();
   }
