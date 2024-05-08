@@ -9,9 +9,6 @@ interface NavbarProps {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <span className="self-center text-sm font-semibold whitespace-nowrap">COSCI Assistant</span>
         <div className="flex flex-wrap items-left gap-3">
-          <button>
-            <Image src="/musical-bell-outline.png" alt="BELL IMAGE" width={25} height={25} />
-          </button>
           {profileImage && (
             <Image src={profileImage} alt="Profile" className="object-cover rounded-full" width={25} height={25} />
           )}
