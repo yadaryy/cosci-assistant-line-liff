@@ -12,7 +12,7 @@ export interface notifyStatus {
 }
 
 export async function getNotifyStatus(id: string) {
-  const url = `https://5481-184-22-54-143.ngrok-free.app/notify/${id}`;
+  const url = `https://ddc2-49-229-124-153.ngrok-free.app/notify/${id}`;
 try{
   const response = await fetch(url, {
     method: 'POST',
@@ -32,7 +32,7 @@ try{
 }
 
 export async function postNotifySettings(id:String, emergency:Boolean, news:Boolean) {
-    const url = `https://5481-184-22-54-143.ngrok-free.app/notify/setting/${id}`;
+    const url = `https://ddc2-49-229-124-153.ngrok-free.app/notify/setting/${id}`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
